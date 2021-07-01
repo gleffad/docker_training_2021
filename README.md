@@ -7,7 +7,7 @@ docker build -t srv1 .
 docker build -t srv2 .
 ```
 
-3) Lance les conteneurs (port entré : port sorti)
+3) Lance les conteneurs (container : app)
 ```
 docker run -p 8080:8080 srv2
 docker run -p 4567:4567 srv0
