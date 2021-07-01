@@ -6,18 +6,24 @@ const port = 5372;
 app.use(express.text());
 
 app.post('/', (req, res) => {
-  // console.log(req.body);
   if (req.body == 'pong') {
-    console.log('pinging server 0');
-    console.log('pong recieved from server 0');
-    setTimeout(() => {
-      fetch('http://localhost:4567', {
+    console.log('pong from server 0');
+    setTimeout(async () => {
+      let resept;
+      await fetch('http://localhost:8080')
+        .then((res) => res.json())
+        .then(
+          (body) =>
+          (resept = body.filter(
+            (p) => p != 'http://localhost:' + port 
+          )[0])
+        );
+      await fetch(resept, {
         method: 'POST',
         body: 'ping',
         headers: { 'Content-Type': 'text/plain' },
       }).catch((err) => {
-        console.log('Err : cannot ping server 0');
-        
+        console.log('Error');
       });
     }, 500);
   }

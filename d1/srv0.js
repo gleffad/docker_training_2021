@@ -2,30 +2,40 @@ const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
 const port = 4567;
+let serv = '';
 
 app.use(express.text());
 
-const connect = (req) => {
-    fetch('http://localhost:5372', {
+const connect = async (req) => {
+    if (!serv) {
+        await fetch('http://localhost:8080')
+            .then((res) => res.json())
+            .then(
+                (body) =>
+                (toto = body.filter(
+                    (p) => p != 'http://localhost:' + port 
+                )[0])
+            );
+    }
+    await fetch(toto, {
         method: 'POST',
         body: 'pong',
         headers: { 'Content-Type': 'text/plain' },
     }).catch((err) => {
-        console.log('Err : cannot pong server 1');
+        console.log('Error');
         setTimeout(() => {
             connect();
         }, 500);
     });
 };
 
+connect();
+
 app.post('/', (req, res) => {
     if (req.body == 'ping') {
-        console.log('ponging server 1');
-        console.log('ping recieved from server 1');
+        console.log('ping from server 1');
         connect();
     }
 });
-
-connect();
 
 app.listen(port);
