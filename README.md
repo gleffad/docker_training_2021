@@ -9,7 +9,7 @@ docker build -t serv3 .
 
 3) Lance les conteneurs (port entré : port sorti)
 ```
-docker run -p 4567:4567 serv1
-docker run -p 5372:5372 serv2
-docker run -p 8080:8080 serv3
+docker run -p 4567:4567 srv0
+docker run -p 5372:5372 srv1
+docker run -p 8080:8080 srv3
 ```
