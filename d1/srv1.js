@@ -1,15 +1,26 @@
-const http = require('http');
+const express = require('express');
+const fetch = require('node-fetch');
+const app = express();
+const port = 5372;
 
-const hostname = '127.0.0.1';
+app.use(express.text());
 
-
-const port1 = 5372;
-const srv1 = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+app.post('/', (req, res) => {
+  // console.log(req.body);
+  if (req.body == 'pong') {
+    console.log('pinging server 0');
+    console.log('pong recieved from server 0');
+    setTimeout(() => {
+      fetch('http://localhost:4567', {
+        method: 'POST',
+        body: 'ping',
+        headers: { 'Content-Type': 'text/plain' },
+      }).catch((err) => {
+        console.log('Err : cannot ping server 0');
+        
+      });
+    }, 500);
+  }
 });
 
-srv1.listen(port1, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port1}/`);
-});
+app.listen(port);
