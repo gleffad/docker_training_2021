@@ -2,9 +2,9 @@
   "name": "docker_training",
   "version": "1.0.0",
   "description": "",
-  "main": "srv0.js",
+  "main": "com-1.js",
   "scripts": {
-    "start": "nodemon serv1.js"
+    "start": "nodemon com-1.js"
   },
   "keywords": [],
   "author": "",

@@ -10,12 +10,12 @@ app.post('/', (req, res) => {
     console.log('pong from server 0');
     setTimeout(async () => {
       let resept;
-      await fetch('http://172.16.8.72:8080')
+      await fetch('http://172.16.8.98:8080')
         .then((res) => res.json())
         .then(
           (body) =>
           (resept = body.filter(
-            (p) => p != 'http://172.16.8.72:' + port 
+            (p) => p != 'http://172.16.8.98:' + port 
           )[0])
         );
       await fetch(resept, {

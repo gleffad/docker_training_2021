@@ -8,12 +8,12 @@ app.use(express.text());
 
 const connect = async (req) => {
     if (!serv) {
-        await fetch('http://172.16.8.72:8080')
+        await fetch('http://172.16.8.98:8080')
             .then((res) => res.json())
             .then(
                 (body) =>
                 (toto = body.filter(
-                    (p) => p != 'http://172.16.8.72:' + port 
+                    (p) => p != 'http://172.16.8.98:' + port 
                 )[0])
             );
     }
