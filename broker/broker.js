@@ -1,29 +1,10 @@
 const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
-const registry_addr = 'http://172.16.8.98:8080';
-const my_addr = 'http://172.16.8.98:4567';
-const registered_frame = null;
+const port = 4567;
+let serv = '';
 
 app.use(express.text());
-
-//sending address to the registry
-if (!registered) {
-    fetch(registry_addr + '/register',
-        {
-            method: 'POST',
-            body: JSON.stringify({
-                addr: my_addr,
-                type: 'com0'
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        .then((body) => registered_frame = body.JSON)
-        .catch((err) => {
-            console.log('Error : fail to register address');
-            registered = null;
-        });
-}
 
 const connect = async (req) => {
     if (!serv) {
@@ -32,7 +13,7 @@ const connect = async (req) => {
             .then(
                 (body) =>
                 (toto = body.filter(
-                    (p) => p != 'http://172.16.8.98:' + port
+                    (p) => p != 'http://172.16.8.98:' + port 
                 )[0])
             );
     }

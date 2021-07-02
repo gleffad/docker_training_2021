@@ -15,10 +15,10 @@ services:
     ports:
       - "4567:4567"
     depends_on:
-      - "registry"
+      - "broker"
   com-1:
     build: ./com-1
     ports:
       - "5372:5372"
     depends_on:
-      - "registry"
+      - "broker"
