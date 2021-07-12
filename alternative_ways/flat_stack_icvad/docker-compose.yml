@@ -1,0 +1,32 @@
+version: '3'
+services:
+    registry:
+        build:
+            dockerfile: ./DockerfileRegistry
+            context: .
+        ports:
+            - "8080:8080"
+    broker:
+        build:
+            dockerfile: ./DockerfileBroker
+            context: .
+        ports:
+            - "80:80"
+        depends_on:
+            - "registry" 
+    s0:
+        build:
+            dockerfile: ./DockerfileS0
+            context: .
+        ports:
+            - "4567:4567"
+        depends_on:
+            - "broker"
+    s1:
+        build:
+            dockerfile: ./DockerfileS1
+            context: .
+        ports:
+            - "5372:5372"
+        depends_on: 
+            - "broker"

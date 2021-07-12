@@ -1,0 +1,31 @@
+version: "2.2"
+services:
+  server3: 
+    image: server3
+    ports : 
+      - 3003:3003
+    networks:
+      - webproxy
+  server4: 
+    image: server4
+    ports : 
+      - 3004:3004
+    networks:
+      - webproxy
+    depends_on: 
+      - server3
+  server2: 
+    image: server2
+    networks:
+      - webproxy
+    depends_on: 
+      - server3
+  server1: 
+    image: server1
+    networks:
+      - webproxy
+    depends_on: 
+      - server3
+networks:
+  webproxy:
+    driver: bridge

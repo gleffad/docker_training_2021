@@ -1,0 +1,16 @@
+{
+  "name": "docker-microservice",
+  "version": "1.0.0",
+  "description": "Docker and node js exercices",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
